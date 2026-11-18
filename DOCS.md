@@ -1,6 +1,6 @@
 # rsg-deliveries — Technical Documentation
 
-Version 3.1.1. For installation and the full configuration tables see [README.md](README.md).
+Version 3.2.0. For installation and the full configuration tables see [README.md](README.md).
 
 ## Contents
 
@@ -140,3 +140,8 @@ Nothing is saved. Active deliveries and cooldowns live in server memory and are 
 ## Support
 
 https://buymeacoffee.com/rexshack
+
+## rsg-reputation integration
+
+`Config.Reputation = { Enabled, Action, Regions }`. When a delivery starts, the hub's region is looked up by hub label and stored on the active delivery. On completion (wagon validated, cash paid) the server calls `ApplyAction(src, 'delivery', region)`. A hub that is not listed (for example Macfarlanes Ranch) passes no region, so nothing changes because the default `delivery` action has no honor. Skipped when rsg-reputation is not started.
+
